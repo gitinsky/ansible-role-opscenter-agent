@@ -1,0 +1,1 @@
+opscenter_inventory_hostname: "{{ inventory_hostname }}"
