@@ -4,8 +4,11 @@
 - name: Add the DataStax Community repository
   apt_repository: repo='deb http://debian.datastax.com/community stable main' update_cache=yes
 
-- name: install opscenter agent
-  apt: name=datastax-agent
+- name: install opscenter agent and dependencies
+  apt: name={{ item }}
+  with_items:
+      - sysstat
+      - datastax-agent
   
 - name: put address.yaml
   template: src=address.yaml dest=/var/lib/datastax-agent/conf/address.yaml
